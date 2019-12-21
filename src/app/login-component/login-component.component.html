@@ -1,0 +1,87 @@
+<div class="container">
+    <form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+        <div class="form-group">
+            <label for="userName">User name</label>
+            <input type="text" class="form-control" id="userName" name="userName"  ngModel required/>
+        </div>
+        <div class="form-group">
+            <label for="password"> Password</label>
+            <input type="text" class="form-control" id="password" name="password" ngModel required/>
+        </div>
+        <div class="form-group" ngModelGroup="address">
+            <!-- <ng-container ngModelGroup="address"> -->
+                <label for="street"> Street</label>
+                <input type="text" name="street" class="form-control" ngModel >
+                <label for="house"> House</label>
+                <input type="number" name="house" class="form-control" ngModel >
+           <!-- </ng-container> -->
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid" >Submit</button>
+    </form>
+</div>
+
+<div class="container">
+    <form [formGroup]="infoForm" (ngSubmit)="info()">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name" required>
+            
+        </div>
+        <div class="form-group" formGroupName="address">
+            <h3>Address</h3>
+          
+            <label>
+              Street:
+              <input type="text" formControlName="street"  class="form-control">
+            </label>
+          
+            <label>
+              City:
+              <input type="text" formControlName="city"  class="form-control">
+            </label>
+            
+            <label>
+              State:
+              <input type="text" formControlName="state"  class="form-control">
+            </label>
+          
+            <label>
+              Zip Code:
+              <input type="text" formControlName="zip"  class="form-control">
+            </label>
+          </div>
+        <button type="submit" class="btn btn-success" [disabled]="!infoForm.valid" >Submit</button>
+    </form>
+    {{infoForm.value | json}}
+    
+</div>
+
+
+<div class="container">
+<form [formGroup]="infoForm1">
+    <div class="form-group">
+         <label for="firstName"></label>
+         <input type="text" formControlName="firstName">
+         <label for="lastName"></label>
+         <input type="text" formControlName="lastName">
+    </div>
+    <div class="form-group" formGroupName="addr">
+        <label for="street"></label>
+         <input type="text" formControlName="street">
+         <label for="pinCode"></label>
+         <input type="number" formControlName="pinCode">
+    </div>
+    <div class="form-group" formArrayName="aliases">
+        <h3>Aliases</h3> <button (click)="addAlias()">Add Alias</button>
+      
+        <div *ngFor="let address of aliases.controls; let i=index">
+          <!-- The repeated alias template -->
+          <label>
+            Alias:
+            <input type="text" [formControlName]="i"><span (click)="deleteAlias(i)">Delete</span>
+          </label>
+        </div>
+      </div>
+</form>
+{{infoForm1.value | json}}
+</div>

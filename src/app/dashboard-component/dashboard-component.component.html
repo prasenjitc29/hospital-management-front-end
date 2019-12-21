@@ -1,0 +1,55 @@
+<form #f="ngForm" (ngSubmit)="submitForm(f)">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col" *ngFor="let head of headersArry">{{head}}</th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr>
+            <th scope="row">{{formArray[0].rowHeader}}</th>
+            <ng-container ngModelGroup="rowArry" *ngFor="let col of formArray[0].rowArry">
+                <td><input type="radio" name="clap1" [value]="col.id" ngModel></td>
+            </ng-container>
+        </tr>
+        <tr>
+            <th scope="row">{{formArray[1].rowHeader}}</th>
+            <ng-container ngModelGroup="rowArry" *ngFor="let col of formArray[1].rowArry">
+                <td><input type="radio" name="clap2" [value]="col.id" ngModel></td>
+            </ng-container>
+        </tr>
+        <tr>
+            <th scope="row">{{formArray[2].rowHeader}}</th>
+            <ng-container ngModelGroup="rowArry" *ngFor="let col of formArray[2].rowArry">
+                <td><input type="radio" name="clap3" [value]="col.id" ngModel></td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>
+<button type="submit">Submit</button>
+
+{{f.form.value | json}}
+</form>
+
+
+
+    <form [formGroup]="form"  (ngSubmit)="submitForm()">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" *ngFor="let head of headersArry">{{head}}</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let row of formArray">
+                <tr>
+                    <th scope="row">{{row.rowHeader}}</th>
+                    <ng-container  *ngFor="let col of row.rowArry">
+                        <td><input type="radio" formControlName="{{row.rowHeader}}" [value]="col.id" ngModel></td>
+                    </ng-container>
+                </tr>
+                
+            </tbody>
+        </table>
+        <button type="submit">Submit</button>
+        {{form.value | json}}
+  </form>

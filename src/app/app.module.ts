@@ -6,6 +6,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponentComponent } from './login-component/login-component.component';
 import { DashboardComponentComponent } from './dashboard-component/dashboard-component.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { TransferHttpCacheModule } from '@nguniversal/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NgtUniversalModule } from '@ng-toolkit/universal';
 
 @NgModule({
   declarations: [
@@ -14,10 +19,15 @@ import { DashboardComponentComponent } from './dashboard-component/dashboard-com
     DashboardComponentComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    TransferHttpCacheModule,
+    HttpClientModule,
+    NgtUniversalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@
         <tr>
             <th scope="row">{{formArray[0].rowHeader}}</th>
             <ng-container ngModelGroup="rowArry" *ngFor="let col of formArray[0].rowArry">
-                <td><input type="radio" name="clap1" [value]="col.id" ngModel></td>
+                <td><input type="radio" [name]="formArray[0].rowHeader" [value]="col.id" ngModel></td>
             </ng-container>
         </tr>
         <tr>
@@ -27,13 +27,17 @@
     </tbody>
 </table>
 <button type="submit">Submit</button>
+<div class="form-group">
+    <label for="file">Choose File</label>
+    <input type="file"
+           id="file" name="fileUpload" ngModel>
+           <!-- (change)="handleFileInput($event.target.files)"> -->
+</div>
+
 
 {{f.form.value | json}}
 </form>
-
-
-
-    <form [formGroup]="form"  (ngSubmit)="submitForm()">
+    <!-- <form [formGroup]="form"  (ngSubmit)="submitForm()">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -52,4 +56,4 @@
         </table>
         <button type="submit">Submit</button>
         {{form.value | json}}
-  </form>
+  </form> -->

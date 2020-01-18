@@ -44,7 +44,7 @@
                 <tr>
                     <th scope="row">{{row.rowHeader}}</th>
                     <ng-container  *ngFor="let col of row.rowArry">
-                        <td><input type="radio" formControlName="{{row.rowHeader}}" [value]="col.id" ngModel></td>
+                        <td><input type="radio" formControlName="{{row.rowHeader}}" [value]="col.id"></td>
                     </ng-container>
                 </tr>
                 

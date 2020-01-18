@@ -22,6 +22,12 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Serverless implementtation
+ 
+1. npm install -g serverless (install serverless globally)
+2. serverless config credentials --provider aws --key accessKey --secret  secretKey
+3. ng add @ng-toolkit/universal(optional, It is for enabling SEO feature)
+4. ng add @ng-toolkit/serverless --provider aws (adding serverless dependency to the project)
+5. Updated package.json with latest webpack-cli() "webpack-cli": "3.1.1")
+6. commented "externals" attribute in webpack.server.config.js(It is throwing some error)
+6. npm run build:serverless:deploy (Deploy to aws)

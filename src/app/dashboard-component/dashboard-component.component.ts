@@ -20,11 +20,12 @@ export class DashboardComponentComponent implements OnInit {
     { "rowHeader": "Row2", "rowArry": [{ "id": 1, "name": "Abc" }, { "id": 2, "name": "def" }, { "id": 3, "name": "xyz" }] },
     { "rowHeader": "Row3", "rowArry": [{ "id": 1, "name": "Abc" }, { "id": 2, "name": "def" }, { "id": 3, "name": "xyz" }] }
   ];
-  constructor(private _fb: FormBuilder) {
-    this.form = _fb.group({});
-    this.formArray.forEach(question => {
-      this.form.addControl(question.rowHeader, _fb.control(null, Validators.required));
-    })
+
+  constructor(private _fb: FormBuilder) { 
+    // this.form = _fb.group({});
+    // this.formArray.forEach(question => {
+    //   this.form.addControl(question.rowHeader, _fb.control(null, Validators.required));
+    // })
   }
 
   ngOnInit() {
@@ -158,4 +159,5 @@ replaySub.next(3);
   submitForm(f) {
     console.log(f.form.value);
   }
+
 }
